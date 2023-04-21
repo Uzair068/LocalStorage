@@ -15,32 +15,53 @@
         <label> EmailId</label>
         <input type="email" name="emailId" required />
         <label> Phone Number</label>
-        <input type="tel" name="phonenumber" required/>
+        <input type="tel" name="phonenumber" required />
         <button> Submit </button>
     </form>
+    <ul id="listOfitems">
+        <li></li>
+        <input type="button" value="Delete">
+    </ul>
+
     <script>
-        function saveToLocalStorage(event){
+        function saveToLocalStorage(event) {
             event.preventDefault();
-            const name=event.target.username.value;
-            const email=event.target.emailId.value;
-            const phone=event.target.phonenumber.value;
+            const name = event.target.username.value;
+            const email = event.target.emailId.value;
+            const phone = event.target.phonenumber.value;
             // localStorage.setItem('name',name)
             // localStorage.setItem('email',email)
             // localStorage.setItem('phone',phone)
-            let myobj={ 
-            name:name,
-            email:email,
-            phone:phone
+            let myobj = {
+                name: name,
+                email: email,
+                phone: phone
+            }
+
+            let myobjserialized = JSON.stringify(myobj)
+            localStorage.setItem(email, myobjserialized)
+            let myobjDesesrialized = json.parse(localStorage.getItem('myobj'))
+            showUserOnScreen(myobj)
         }
 
-        let myobjserialized=JSON.stringify(myobj)
-        localStorage.setItem(email,myobjserialized)
-        let myobjDesesrialized=json.parse(localStorage.getItem('myobj'))
-        }
+        function showUserOnScreen(myobj) {
+            const parentElem = document.getElementById('listOfitems')
 
+            const childElem = document.createElement('li')
+            childElem.textContent = myobj.name + "-"  + myobj.email + ' - ' + myobj.phone
+            const deleteButton = document.createElement('input')
+            deleteButton.type = "button"
+            deleteButton.value = 'Delete'
+            deleteButton.onclick = () => {
+                localStorage.removeItem(myobj.email)
+                parentElem.removeChild(childElem)
+    }
+            childElem.appendChild(deleteButton)
+            parentElem.appendChild(childElem)
+        }
         // objects in localStorage
 
-        // let myobj={ 
+        // let myobj={
         //     name:name,
         //     email:email,
         //     phone:phone
