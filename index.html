@@ -15,19 +15,31 @@
         <label> EmailId</label>
         <input type="email" name="emailId" required />
         <label> Phone Number</label>
-        <input type="tel" name="phonenumber" />
+        <input type="tel" name="phonenumber" required/>
         <button> Submit </button>
     </form>
     <script>
-        function saveToLocalStorage(event){
-            event.preventDefault();
-            const name=event.target.username.value;
-            const email=event.target.emailId.value;
-            const phone=event.target.phonenumber.value;
-            localStorage.setItem('name',name)
-            localStorage.setItem('email',email)
-            localStorage.setItem('phone',phone)
+        // function saveToLocalStorage(event){
+        //     event.preventDefault();
+        //     const name=event.target.username.value;
+        //     const email=event.target.emailId.value;
+        //     const phone=event.target.phonenumber.value;
+        //     localStorage.setItem('name',name)
+        //     localStorage.setItem('email',email)
+        //     localStorage.setItem('phone',phone)
+        // }
+
+        // objects in localStorage
+
+        let myobj={
+            name:'zain',
+            age:425 
         }
+
+        let myobjserialized=JSON.stringify(myobj)
+        localStorage.setItem('myobj',myobjserialized)
+        let myobjDesesrialized=json.parse(localStorage.getItem('myobj'))
+        
     </script>
 
 </body>
