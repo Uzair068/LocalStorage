@@ -19,27 +19,37 @@
         <button> Submit </button>
     </form>
     <script>
-        // function saveToLocalStorage(event){
-        //     event.preventDefault();
-        //     const name=event.target.username.value;
-        //     const email=event.target.emailId.value;
-        //     const phone=event.target.phonenumber.value;
-        //     localStorage.setItem('name',name)
-        //     localStorage.setItem('email',email)
-        //     localStorage.setItem('phone',phone)
-        // }
-
-        // objects in localStorage
-
-        let myobj={
-            name:'zain',
-            age:425 
+        function saveToLocalStorage(event){
+            event.preventDefault();
+            const name=event.target.username.value;
+            const email=event.target.emailId.value;
+            const phone=event.target.phonenumber.value;
+            // localStorage.setItem('name',name)
+            // localStorage.setItem('email',email)
+            // localStorage.setItem('phone',phone)
+            let myobj={ 
+            name:name,
+            email:email,
+            phone:phone
         }
 
         let myobjserialized=JSON.stringify(myobj)
-        localStorage.setItem('myobj',myobjserialized)
+        localStorage.setItem(email,myobjserialized)
         let myobjDesesrialized=json.parse(localStorage.getItem('myobj'))
-        
+        }
+
+        // objects in localStorage
+
+        // let myobj={ 
+        //     name:name,
+        //     email:email,
+        //     phone:phone
+        // }
+
+        // let myobjserialized=JSON.stringify(myobj)
+        // localStorage.setItem(email,myobjserialized)
+        // let myobjDesesrialized=json.parse(localStorage.getItem('myobj'))
+
     </script>
 
 </body>
